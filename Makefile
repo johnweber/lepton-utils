@@ -14,5 +14,12 @@ fblept: fblept.c leptsci.o
 
 leptsci.o: leptsci.c
 
+install: all
+	install -d $(DESTDIR)$(PREFIX)
+	install -m 0755 fblept $(DESTDIR)$(PREFIX)
+	install -m 0755 leptbmp $(DESTDIR)$(PREFIX)
+	install -m 0755 leptgraypng $(DESTDIR)$(PREFIX)
+	install -m 0755 leptcam $(DESTDIR)$(PREFIX)
+
 clean:
 	rm -f leptcam *.o fblept leptbmp leptgraypng
