@@ -1,4 +1,4 @@
-CFLAGS = -Wall
+PREFIX ?= /usr/bin
 
 all: leptbmp fblept leptgraypng leptcam
 
