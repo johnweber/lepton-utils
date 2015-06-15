@@ -41,3 +41,6 @@ leptgraypng
 leptbmp
 .gitignore
 
+.cproject
+.project
+.settings/
