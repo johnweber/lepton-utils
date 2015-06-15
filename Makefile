@@ -1,18 +1,23 @@
 PREFIX ?= /usr/bin
 
+CC ?= gcc
+
+# Debugging
+ifdef DEBUG
+CFLAGS = -DDEBUG -O0 -g
+endif
+
 all: leptbmp fblept leptgraypng leptcam
 
-leptcam: leptcam.o
-	${CC} -o leptcam leptcam.c leptsci.o -lpthread -Wall
+leptcam: leptcam.c leptsci.c
+	${CC} ${CFLAGS} -o leptcam leptcam.c leptsci.c -lpthread ${LDFLAGS}
 
-leptgraypng: leptgraypng.c leptsci.o
-	${CC} -o leptgraypng leptgraypng.c leptsci.o -lpng -Wall
+leptgraypng: leptgraypng.c leptsci.c
+	${CC} ${CFLAGS} -o leptgraypng leptgraypng.c leptsci.c -lpng ${LDFLAGS}
 
 leptbmp: leptbmp.c leptsci.o
 
 fblept: fblept.c leptsci.o
-
-leptsci.o: leptsci.c
 
 install: all
 	install -d $(DESTDIR)$(PREFIX)
