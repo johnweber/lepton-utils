@@ -109,10 +109,10 @@ static void write_frame(unsigned short *img)
 			for (yb = 0; yb < mag; yb++) {
 				loc = (x * mag) * BYTES_PER_PIXEL + (yb + y * mag) * FB_WIDTH * BYTES_PER_PIXEL;
 				for (xb = 0; xb < mag; xb++) {
+						*(vidsendbuf + loc++) = 0;
 						*(vidsendbuf + loc++) = r;
 						*(vidsendbuf + loc++) = g;
 						*(vidsendbuf + loc++) = b;
-						*(vidsendbuf + loc++) = 0;
 				}
 			}
 		}
