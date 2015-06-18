@@ -8,7 +8,7 @@
 #include "leptsci.h"
 
 static uint8_t bits = 8;
-static uint32_t speed = 20000000;
+static uint32_t speed = 16000000;
 static uint16_t delay = 0;
 static int leptfd;
 #define VOSPI_FRAME_SIZE 164
