@@ -8,12 +8,14 @@
 #include "leptsci.h"
 
 static uint8_t bits = 8;
-static uint32_t speed = 16000000;
+static uint32_t speed = 20000000;
 static uint16_t delay = 0;
 static int leptfd;
 #define VOSPI_FRAME_SIZE 164
 #define LEPTON_NUM_ROWS 60
 #define LEPTON_NUM_COLUMNS 80
+#define IMX6
+
 
 #define PRINT_DEBUG_INFO 0
 #define PRINT_TIMING_INFO 0
@@ -27,10 +29,15 @@ static int leptfd;
 // and the SPI CLK in order to wait for resync
 #define VOSPI_FRAME_RESYNC_TIME_MICROSECONDS 200000
 
+#ifdef IMX6
+const char device[] = "/dev/spidev32766.0";
+#else
+const char device[] = "/dev/spidev0.0";
+#endif
+
 int leptopen()
 {
-    uint8_t mode = 0;
-    const char device[] = "/dev/spidev32766.0";
+    uint8_t mode = SPI_MODE_1;
     leptfd = open(device, O_RDWR);
     if (leptfd < 0)
         return -1;

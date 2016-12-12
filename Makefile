@@ -9,8 +9,8 @@ endif
 
 all: leptbmp fblept leptgraypng leptcam
 
-leptcam: leptcam.c leptsci.c
-	${CC} ${CFLAGS} -o leptcam leptcam.c leptsci.c -lpthread ${LDFLAGS}
+leptcam: leptcam.c leptsci.c palettes.c
+	${CC} ${CFLAGS} -o leptcam leptcam.c leptsci.c palettes.c -lpthread ${LDFLAGS}
 
 leptgraypng: leptgraypng.c leptsci.c
 	${CC} ${CFLAGS} -o leptgraypng leptgraypng.c leptsci.c -lpng ${LDFLAGS}
